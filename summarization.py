@@ -1,0 +1,22 @@
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+
+
+tokenizer = AutoTokenizer.from_pretrained("Mr-Vicky-01/Bart-Finetuned-conversational-summarization")
+model = AutoModelForSeq2SeqLM.from_pretrained("Mr-Vicky-01/Bart-Finetuned-conversational-summarization")
+
+
+def get_summary(text):
+    '''
+        get the summary
+    '''
+    inputs = tokenizer([text], max_length=1024, return_tensors='pt', truncation=True)
+    summary_ids = model.generate(inputs['input_ids'], max_new_tokens=100, do_sample=False)
+    summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    return summary
+
+# description of my Phd subject
+text_to_summarize = """The Immune system is an extraordinary mechanism. Its mission is to defend and protect our organisms and keep them functional, healthy and safe. It comprises two subsystems: the innate immune system and the adaptive immune system, which have complementary roles in assuring the required protection. The innate immune system is an immediate and nonspecific mechanism that includes anatomic, endocytic, physiologic, phagocytic and inflammatory barriers, it is fast and provides a general protection against a wide range of threats. On the other hand, the adaptive immune system is acquired by jawed vertebrate species; It is characterised by its specificity, long memory, and the huge diversity of the immunoglobulins (IG) and the T cell receptors (TR), that are expressed on the surface of B cells and T cells respectively. The adaptive immune response provides a long-lasting specific protection, but it is slower than the innate response. Two types of adaptive immune response can be distinguished: the cell-mediated immune response, which is carried out by the T cells, and the humoral immune response, which is controlled by activated B cells and antibodies. Identifying and predicting the genes that produce those two types of immune responses at the genomic level is still very challenging and resource demanding, due to the highly polymorphic nature of these genes. They comprise multigene families: variable (V), diversity (D), joining (J) and constant (C) genes and their positions are scattered over various different chromosomes. For that purpose, IMGT®, the international ImMunoGeneTics information system®, the global reference in immunogenetics and immunoinformatics developed IMGT/LIGMotif, a tool dedicated to the identification and the annotation of IG and TR genes in large DNA sequences, based on sequence alignment methods, but with the rapid advancements in sequencing technologies, the number of unannotated genomic sequences rapidly exploded at unprecedented rate; and the time and costs for DNA sequencing became affordable. The cost of sequencing the human genome dropped from $1 million in 2007, to $1000 in 2014, and at the time of writing, it costs approximately $600. Furthermore, the covid-19 pandemic became a genomic data accelerator as countless sequencing experiments were conducted at big scales. Thus, genomic material became cheap, affordable, abundant and the number of sequences that are not annotated skyrocketed. Apparently, the next generation annotation tools are becoming a necessity, which are capable of locating, characterising and annotating the IG and TR genes on the fly and at a large scale (Big Data era) for various species genomes. This could also open up the horizon for possible personalised and individualised treatments based on the genomic information. With all that being said, this PhD work was motivated by the possibility of finding an automatic, fast, cheap and cost effective way of the IG and TR gene identification and annotation, using Artificial Intelligence (AI) and Deep Learning (DL) technologies, which demonstrated their immense supremacy and achieved impressive results in various fields, such as cracking the protein folding problem. In this thesis manuscript, I started with a formal description of immunology, immunogenetics and the immunoinformatics fields, then moved to discuss Artificial Intelligence, Deep Learning, the Transformers architecture and the Transfer Learning (TL) advantage that it offers. Finally, I described my novel approach to annotate the variable gene of IG and TR receptors, using our predictive Transformer-based models. All in all, this PhD work investigated the possibility of fully automating the identification and annotation of the IG and TR genes, using Artificial Intelligence and Deep Learning."""
+
+
+summary = get_summary(text_to_summarize)
+print(summary)

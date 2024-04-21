@@ -7,5 +7,14 @@ To run the code `python psychologist.py` please install the following :
 !pip install transformers
 !pip install llama-index llama-index-llms-huggingface
 !pip install torch
+!pip install bitsandbytes
+!pip install git+https://github.com/huggingface/accelerate.git
 ```
+
+# Summarization
+
+# RAG
+
+
+
 
