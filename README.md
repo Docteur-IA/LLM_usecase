@@ -15,6 +15,17 @@ To run the code `python psychologist.py` please install the following :
 
 # RAG
 
+```
+!pip install -q langchain==0.1.7
+!pip install -q torch
+!pip install -q transformers
+!pip install -q sentence-transformers
+!pip install -q datasets
+!pip install -q faiss-cpu
+
+```
+## Dataset
+The databricks-dolly-15k was selected as dataset.
 
 
 
