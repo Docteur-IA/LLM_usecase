@@ -48,8 +48,8 @@ quantization_config = BitsAndBytesConfig(
 )
 # the pretrained LLM 
 llm = HuggingFaceLLM(
-    model_name="NEU-HAI/Llama-2-7b-alpaca-cleaned",
-    tokenizer_name="NEU-HAI/Llama-2-7b-alpaca-cleaned",
+    model_name="NEU-HAI/mental-flan-t5-xxl",
+    tokenizer_name="NEU-HAI/mental-flan-t5-xxl",
     context_window=3900,
     max_new_tokens=256,
     model_kwargs={"quantization_config": quantization_config},
