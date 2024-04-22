@@ -1,5 +1,5 @@
 # Psychologist/therapist usecase.
-This usecase is reflected in the psychologist.py python file. Due to the time constraint and lack of GPU, I opted to use a pretrained model, that is well document is a scientific paper.
+This usecase is reflected in the psychologist.py python file. Due to the time constraint and lack of GPU, I opted to use a pretrained model, that is well documented is a scientific paper.
 
 ## Model
 I used a fine-tuned model called FLAN-T5-XXL with 4 high-quality text (6 tasks in total) datasets for the mental health prediction scenario: Dreaddit, DepSeverity, SDCNL, and CCRS-Suicide (see the reference paper). 
